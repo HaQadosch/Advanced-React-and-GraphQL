@@ -7,6 +7,14 @@ Sentry.init({
   release: 'Advanced-React-and-GraphQL@0.4'
 })
 
+Sentry.configureScope((scope) => {
+  scope.setUser({
+    'id': 'god',
+    'username': 'haqadosch',
+    'email': 'haqadosch@pm.me'
+  })
+})
+
 export default class MyApp extends App {
   constructor (props) {
     super(props)
