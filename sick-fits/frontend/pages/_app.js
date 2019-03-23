@@ -4,7 +4,7 @@ import { Page } from '../components/Page'
 
 Sentry.init({
   dsn: 'https://6066970219f84edca9f1c5d21e8a75c3@sentry.io/1417349',
-  release: 'Advanced-React-and-GraphQL@0.4'
+  release: 'Advanced-React-and-GraphQL@2.7'
 })
 
 Sentry.configureScope((scope) => {
