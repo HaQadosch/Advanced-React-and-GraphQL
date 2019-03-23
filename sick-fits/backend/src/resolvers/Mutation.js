@@ -1,9 +1,7 @@
 const Mutation = {
-  createDog (parent, { name, ...args }, context, info) {
-    global.dogs = global.dogs || []
-    const newDog = { name }
-    global.dogs.push(newDog)
-    return newDog
+  async createItem (parent, args, { db: { mutation, query, ...dbRest }, ...ctx }, info) {
+    const item = await mutation.createItem({ data: { ...args } }, info)
+    return item
   }
 }
 
