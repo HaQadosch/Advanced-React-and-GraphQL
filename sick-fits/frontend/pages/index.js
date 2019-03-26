@@ -1,6 +1,8 @@
+import Items from '../components/Items'
+
 export const Home = props => (
   <div>
-    <p>Yo!</p>
+    <Items />
   </div>
 )
 
