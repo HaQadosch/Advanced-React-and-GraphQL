@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import Link from 'next/link'
 
 import ItemStyles from './styles/ItemStyles'
@@ -8,14 +7,6 @@ import PriceTag from './styles/PriceTag'
 import formatMoney from '../lib/formatMoney'
 
 export default class Item extends Component {
-  constructor (...args) {
-    super(...args)
-
-    const propTypes = {
-      item: PropTypes.object.isRequired
-    }
-  }
-
   render () {
     const { item } = this.props
     return (

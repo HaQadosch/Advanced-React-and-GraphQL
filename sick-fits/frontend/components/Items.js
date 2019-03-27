@@ -4,7 +4,7 @@ import { Query } from 'react-apollo'
 import styled from 'styled-components'
 import Item from './Item'
 
-const ALL_ITEMS_QUERY = gql`
+export const ALL_ITEMS_QUERY = gql`
   query ALL_ITEMS_QUERY {
     items {
       id
