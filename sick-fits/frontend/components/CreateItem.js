@@ -6,6 +6,7 @@ import Router from 'next/router'
 import Form from './styles/Form'
 import formatMoney from '../lib/formatMoney'
 import { displayError, DisplayError } from './ErrorMessage'
+import { injectGlobal } from 'styled-components'
 
 export const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION($title: String!, $description: String!, $price: Int!, $image: String, $largeImage: String) {
@@ -30,6 +31,25 @@ export default class CreateItem extends Component {
       const coerce = type === 'number' ? parseFloat : _ => _
       this.setState({ [name]: coerce(value) })
     }
+
+    this.uploadFile = async ({ target: { files } }) => {
+      const file = files[0]
+      const data = new window.FormData()
+      data.append('file', file)
+      data.append('upload_preset', 'sickfits')
+
+      const res = await window.fetch('https://api.cloudinary.com/v1_1/dc6zhypaf/image/upload', {
+        method: 'POST',
+        body: data
+      })
+
+      const resFile = await res.json()
+      console.log({ resFile })
+      this.setState({
+        image: resFile.secure_url,
+        largeImage: resFile.eager[0].secure_url
+      })
+    }
   }
 
   render () {
@@ -49,6 +69,10 @@ export default class CreateItem extends Component {
             } >
               <DisplayError error={error} />
               <fieldset disabled={loading} aria-busy={loading} >
+                <label htmlFor='file'>Image
+                  <input type='file' id='file' name='file' placeholder='Upload an image' required onChange={this.uploadFile} />
+                  {this.state.image && <img src={this.state.image} alt='upload preview' width='100' /> }
+                </label>
                 <label htmlFor='title'>Title
                   <input type='text' id='title' name='title' placeholder='title' required value={this.state.title} onChange={this.handleChange} />
                 </label>
