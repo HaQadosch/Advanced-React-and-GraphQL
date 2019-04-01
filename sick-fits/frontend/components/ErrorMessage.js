@@ -47,4 +47,3 @@ DisplayError.defaultProps = {
 DisplayError.propTypes = {
   error: PropTypes.object
 }
-

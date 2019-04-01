@@ -21,7 +21,7 @@ export default withData(class MyApp extends App {
   static async getInitialProps ({ Component, ctx }) {
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
     pageProps.query = ctx.query
-    return pageProps
+    return { pageProps }
   }
 
   constructor (props) {
