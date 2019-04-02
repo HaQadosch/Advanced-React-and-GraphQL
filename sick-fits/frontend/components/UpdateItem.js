@@ -39,16 +39,14 @@ export default class UpdateItem extends Component {
       this.setState({ [name]: coerce(value) })
     }
 
-    this.updateItem = async (evt, updateItemMutation, id) => {
+    this.updateItem = async (evt, updateItemMutation) => {
       evt.preventDefault()
-      console.log('Updating item', { state: this.state, props: this.props })
       const res = await updateItemMutation({
         variables: {
           id: this.props.id,
           ...this.state
         }
       })
-      console.log({ res })
     }
   }
 

@@ -44,7 +44,6 @@ export default class CreateItem extends Component {
       })
 
       const resFile = await res.json()
-      console.log({ resFile })
       this.setState({
         image: resFile.secure_url,
         largeImage: resFile.eager[0].secure_url

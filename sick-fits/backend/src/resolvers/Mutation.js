@@ -9,6 +9,12 @@ const Mutation = {
       data: update,
       where: { id }
     }, info)
+  },
+  async deleteItem (parent, { id, ...args }, { db: { mutation: { deleteItem, ...mutation }, query: { item, ...query }, ...db }, ...ctx }, info) {
+    const where = { id }
+
+    const found = await item({ where }, '{ id, title }')
+    return deleteItem({ where }, info)
   }
 }
 

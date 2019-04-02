@@ -5,6 +5,8 @@ import ItemStyles from './styles/ItemStyles'
 import Title from './styles/Title'
 import PriceTag from './styles/PriceTag'
 import formatMoney from '../lib/formatMoney'
+import DeleteItem from './DeleteItem'
+import { introspectSchema } from 'graphql-tools'
 
 export default class Item extends Component {
   render () {
@@ -32,7 +34,7 @@ export default class Item extends Component {
             <a>Edit 🖊</a>
           </Link>
           <button>Add to cart</button>
-          <button>Delete</button>
+          <DeleteItem id={item.id} />
         </div>
       </ItemStyles>
     )
