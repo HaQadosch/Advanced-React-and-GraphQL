@@ -5,7 +5,7 @@ import Router from 'next/router'
 
 import Form from './styles/Form'
 import formatMoney from '../lib/formatMoney'
-import { displayError, DisplayError } from './ErrorMessage'
+import { DisplayError } from './ErrorMessage'
 import { injectGlobal } from 'styled-components'
 
 export const SINGLE_ITEM_QUERY = gql`
